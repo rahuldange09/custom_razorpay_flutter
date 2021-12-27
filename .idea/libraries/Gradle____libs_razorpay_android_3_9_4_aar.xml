@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: ./libs/razorpay-android-3.9.4.aar" type="AndroidModuleLibraryType">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e401334eb4f83383a5465387e1cfd7cd/jetified-razorpay-android-3.9.4/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e401334eb4f83383a5465387e1cfd7cd/jetified-razorpay-android-3.9.4/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

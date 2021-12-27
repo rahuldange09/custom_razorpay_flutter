@@ -1,0 +1,1 @@
+enum UPIFlow { COLLECT, INTENT }
