@@ -9,14 +9,14 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
 Custom Razorpay SDK for Flutter
                        DESC
-  s.homepage         = 'http://example.com'
+  s.homepage         = 'http://github.com/rahuldange09'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Your Company' => 'email@example.com' }
+  s.author           = { 'Rahul Dange' => 'rahuldange09@gmail.com' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
   s.dependency 'Flutter'
-  s.vendored_frameworks = 'Razorpay.xcframework/ios-arm64_armv7/Razorpay.framework'
+  s.vendored_frameworks = 'Razorpay.framework'
 
   s.platform = :ios, '10.1'
 
