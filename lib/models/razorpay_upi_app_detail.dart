@@ -7,8 +7,13 @@ class RazorpayUpiAppDetailModel {
   RazorpayUpiAppDetailModel.fromJson(List list,
       {bool shouldConvertToUint8List = false}) {
     for (final v in list) {
-      upiAppDetailList.add(RazorpayUpiAppDetail.fromJson(v,
-          shouldConvertToUint8List: shouldConvertToUint8List));
+      // For ios
+      if(v is String) {
+        upiAppDetailList.add(RazorpayUpiAppDetail(appName: v, packageName: v));
+      }else {
+        upiAppDetailList.add(RazorpayUpiAppDetail.fromJson(v,
+            shouldConvertToUint8List: shouldConvertToUint8List));
+      }
     }
   }
 }
@@ -18,7 +23,17 @@ class RazorpayUpiAppDetail {
   late String packageName;
   late String iconBase64;
   Uint8List? iconBytes;
+  String? iconUrl;
 
+
+
+  RazorpayUpiAppDetail({
+    this.appName = "",
+    this.packageName = "",
+    this.iconBase64 = "",
+    this.iconBytes,
+    this.iconUrl,
+  });
   RazorpayUpiAppDetail.fromJson(Map<String, dynamic> json,
       {bool shouldConvertToUint8List = false}) {
     appName = json['app_name'] ?? "";

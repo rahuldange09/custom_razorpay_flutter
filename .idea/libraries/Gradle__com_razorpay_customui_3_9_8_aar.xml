@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: com.razorpay:customui:3.9.8@aar" type="AndroidModuleLibraryType">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/56da2065e88eaa2d8d9f06f13610dce9/jetified-customui-3.9.8/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/56da2065e88eaa2d8d9f06f13610dce9/jetified-customui-3.9.8/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

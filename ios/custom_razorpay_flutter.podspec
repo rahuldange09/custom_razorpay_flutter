@@ -6,19 +6,14 @@ Pod::Spec.new do |s|
   s.name             = 'custom_razorpay_flutter'
   s.version          = '0.0.1'
   s.summary          = 'Custom Razorpay SDK for Flutter'
-  s.description      = <<-DESC
-Custom Razorpay SDK for Flutter
-                       DESC
+  s.description      = 'Custom Razorpay SDK for Flutter'
   s.homepage         = 'http://github.com/rahuldange09'
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Rahul Dange' => 'rahuldange09@gmail.com' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
-  s.public_header_files = 'Classes/**/*.h'
   s.dependency 'Flutter'
-  s.vendored_frameworks = 'Razorpay.framework'
-
-  s.platform = :ios, '10.1'
+  s.vendored_frameworks = 'Frameworks/Razorpay.xcframework'
 
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }

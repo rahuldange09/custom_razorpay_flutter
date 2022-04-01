@@ -125,8 +125,8 @@ class CustomRazorpayFlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAw
 
     private fun isValidVpa(args: Any?, result: Result) {
         razorpay.isValidVpa(args.toString(), object : ValidateVpaCallback {
-            override fun onResponse(p0: Boolean) {
-                result.success(p0)
+            override fun onResponse(p0: JSONObject) {
+                result.success(p0.toString())
             }
 
             override fun onFailure() {
@@ -202,7 +202,7 @@ class CustomRazorpayFlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAw
                     val upi = args["upi"] as Map<*, *>
                     if (upi["flow"] != null && upi["flow"]?.equals("intent")!!) {
                         payload.put("_[flow]", upi["flow"])
-                        payload.put("description", args["desciption"])
+                        payload.put("description", args["description"])
                         payload.put("upi_app_package_name", upi["upi_app_package_name"])
                     } else {
                         payload.put("vpa", upi["vpa"])

@@ -53,6 +53,9 @@ public class SwiftCustomRazorpayFlutterPlugin: NSObject, FlutterPlugin, WKNaviga
     case "getAppsWhichSupportUpi":
         self.getAppsWhichSupportUpi(result: result)
         break
+    case "isValidVpa":
+        self.isValidVpa(result: result, vpa: call.arguments as! String)
+        break
     case "getBankLogoUrl":
         self.getBankLogoUrl(result: result, bankCode: call.arguments as! String)
         break
@@ -120,11 +123,19 @@ public class SwiftCustomRazorpayFlutterPlugin: NSObject, FlutterPlugin, WKNaviga
 
     }
     
+    private func isValidVpa(result :@escaping  FlutterResult, vpa : String){
+        razorpay.isValidVpa(vpa, withSuccessCallback: { value in
+            result(value)
+        }, withFailure: { value in
+            result(false)
+        })
+    }
     
     private func getBankLogoUrl(result : FlutterResult, bankCode : String){
         let bankURL : String = razorpay.getBankLogo(havingBankCode : bankCode)?.absoluteString ?? ""
         result(bankURL)
     }
+    
     
     private func getWalletLogoUrl(result : FlutterResult, walletName : String){
         let walletURL : String = razorpay.getWalletLogo(havingWalletName : walletName)?.absoluteString ?? ""
@@ -176,7 +187,13 @@ public class SwiftCustomRazorpayFlutterPlugin: NSObject, FlutterPlugin, WKNaviga
             break
         case "upi":
             let upi : Dictionary<String , Any> = payload["upi"] as! Dictionary<String , Any>
-            options["vpa"] = upi["vpa"]
+            if (upi["flow"] != nil && (upi["flow"] as! String) == "intent") {
+                options["_[flow]"] = upi["flow"]
+                options["description"] = payload["description"]
+                options["upi_app_package_name"] = upi["upi_app_package_name"]
+            }else{
+                options["vpa"] = upi["vpa"]
+            }
             break
         case "wallet":
             let wallet : Dictionary<String , Any> = payload["wallet"] as! Dictionary<String , Any>

@@ -9,7 +9,7 @@ class RazorpayPaymentPayload {
   String contact;
   String email;
   String method;
-  String? desciption;
+  String? description;
   bool shouldSaveCardDetails;
   CardDetails? cardDetails;
   NetbankingDetails? netbankingDetails;
@@ -24,7 +24,7 @@ class RazorpayPaymentPayload {
     required this.customerId,
     required this.contact,
     required this.email,
-    this.desciption,
+    this.description,
     required this.method,
     this.shouldSaveCardDetails = false,
     this.cardDetails,
@@ -41,7 +41,7 @@ class RazorpayPaymentPayload {
     data['customer_id'] = customerId;
     data['contact'] = contact;
     data['email'] = email;
-    data['desciption'] = desciption;
+    data['description'] = description;
     data['method'] = method;
     data['save'] = shouldSaveCardDetails ? 1 : 0;
     data['card'] = cardDetails?.toJson();

@@ -73,11 +73,23 @@ class CustomRazorpayFlutter {
 
   // Check whether vpa is valid or not only available for Android even from Razorpay side
   Future<bool> isValidVpa({required String vpa}) async {
+    dynamic result = await _channel.invokeMethod('isValidVpa', vpa);
+    /*   if (Platform.isAndroid) {
+      return result;
+    } else if (Platform.isIOS) {*/
     if (Platform.isAndroid) {
-      return await _channel.invokeMethod('isValidVpa', vpa);
-    } else {
-      return true;
+      result = json.decode(result);
     }
+    if (result is Map) {
+      if (result.containsKey("success")) {
+        return result["success"];
+      } else if (result.containsKey("error") &&
+          result["error"]["code"] == "BAD_REQUEST_ERROR") {
+        return false;
+      }
+    }
+    // }
+    return true;
   }
 
   // Check whether fields are valid or not only available for Android even from Razorpay side
@@ -99,8 +111,9 @@ class CustomRazorpayFlutter {
         "submit",
         razorpayPayload.toJson(),
       );
-      final responseJSON =
-          Platform.isAndroid ? json.decode(response) : response;
+      final Map<String, dynamic> responseJSON = Platform.isAndroid
+          ? json.decode(response)
+          : (response as Map).cast<String, dynamic>();
       return responseJSON;
     } catch (e) {
       if (e is PlatformException) {
