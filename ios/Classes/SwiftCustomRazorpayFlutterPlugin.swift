@@ -178,6 +178,8 @@ public class SwiftCustomRazorpayFlutterPlugin: NSObject, FlutterPlugin, WKNaviga
                 options["card[expiry_year]"] = card["expiry_year"]
             }else{
                 options["token"] = card["token"]
+                options["consent_to_save_card"] = 1
+                
             }
             options["card[cvv]"] = card["cvv"]
             break

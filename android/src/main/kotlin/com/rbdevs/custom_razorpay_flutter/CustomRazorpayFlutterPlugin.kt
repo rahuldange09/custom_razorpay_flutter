@@ -192,6 +192,7 @@ class CustomRazorpayFlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAw
                         payload.put("card[expiry_year]", card["expiry_year"])
                     } else {
                         payload.put("token", card["token"])
+                        payload.put("consent_to_save_card", 1)
                     }
                     payload.put("card[cvv]", card["cvv"])
                 }
